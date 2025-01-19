@@ -1,0 +1,14 @@
+\section{図表の挿入}
+図表についても通常の \LaTeX と同じ方法を用いることができる．
+
+\subsection{図について}
+図の挿入は，通常\pkg{graphicx}パッケージによって行う（図\ref{fig:sample}）．
+クラスオプションにワークフロー（\code{dvipdfmx}等）を指定していれば，
+各パッケージを読み込む際に何度も同じオプションを指定する必要はない．
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=3cm]{example-image-a}
+\caption{図の例}
+\label{fig:sample}
+\end{figure}
