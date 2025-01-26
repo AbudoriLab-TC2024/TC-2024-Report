@@ -2,23 +2,19 @@
 前章で作成した3D地図に対して、ロボットの自己位置を推定をする。
 3D地図で自己位置推定することで、つくばチャレンジ2024のコース全域でほとんど破綻することなく位置を推定することができた。
 
-自己位置推定手法には、OSSのLidar\_Localization\_ROS2\ref{Localization}を利用した。
+自己位置推定手法には、OSSのlidar\_localization\_ros2\cite{Localization}を利用した。
 
-\subsection{Lidar\_Localization\_ROS2}
-Lidar\_Localization\_ROS2はROS 2で動作する自己位置推定アルゴリズムである。
+\subsection{lidar\_localization\_ros2}
+lidar\_localization\_ros2はROS 2で動作する自己位置推定アルゴリズムである。
 3DLiDARの他にIMUやオドメトリのセンサ値を利用してよりロバストに推定することができる。
 前章で作成した3D地図をpcdファイルに変換して読み込み、コンフィグで有効にしているセンサを起動すれば、自己位置推定を実施してくれる。
 
 \subsection{パラメータチューニング}
-Lidar\_Localization\_ROS2のチューニングとしては以下の点を変更した。
+lidar\_localization\_ros2のチューニングとしては以下の点を変更した。
 \begin{itemize}
     \item k\_correspondences
     \item voxel\_resolution
 \end{itemize}
-
-安定したインターネット環境で書く。
-
-
 AAAの点では、あああパラメータが効く
 BBBの点では、いいいパラメータが効く
 CCCの点では、うううパラメータが効く

@@ -14,18 +14,18 @@
 
 この章では、搭載したハードウェアがどのように使用されたか説明する。
 
-\subsubsection{自律走行ロボット：Penguin}
+\subsubsection{自律走行ロボット:Penguin}
 今回、自律走行を実現する基本的な構成を持ちつつ、不整地の走行も可能な機体とすることをコンセプトに、機体を作成した。 
-作成した機体とその搭載した機器を、図nに記載する。この章では、各要素について詳細を説明する。
+作成した機体とその搭載した機器を、図\ref{fig:robot}に記載する。この章では、各要素について詳細を説明する。
 
 \subsubsection{センサ}
-Penguinには、オドメータ、IMU、LiDARの3種類のセンサが搭載されている。
+Penguinには、エンコーダ、IMU、LiDARの3種類のセンサが搭載されている。
 
-オドメータはモータの回転数を計測するもので、どのくらいモータが回転したか累積を数えることでロボットのホイールオドメトリを推定する。
+エンコーダはモータの回転数を計測するもので、どのくらいモータが回転したか累積を数えることでロボットのホイールオドメトリを推定する。
 ただし、スリップや量子化誤差などで誤差が蓄積するためこの値をそのまま使用することはできない。
 後述のLiDARを使って外界の情報を得ることで補正して使用した。
 
-IMUはロボットのX,Y,Z方向の加速度とRoll、Pitch、Yaw方向の角加速度を取得できる。
+IMUはロボットのX、Y、Z方向の加速度とRoll、Pitch、Yaw方向の角加速度を取得できる。
 この値を累積することで、ジャイロオドメトリを推定することができる。
 ホイールオドメトリのようにスリップすることはないが、段差などの影響を強く受ける。
 今回は、SLAMアルゴリズムでの位置補正に使用した。
@@ -68,7 +68,7 @@ MID-360はVLP-16のような長距離の物体を測定することはできな�
 
 \subsubsection{シャーシ}
 屋外でのデバッグ作業を想定し、日よけの壁を搭載した。
-ロボットは図nのような5ユニットで構成し、各部を計10本のボルトで分解できる形とした。
+ロボットは図\ref{fig:decomposition}のような5ユニットで構成し、各部を計10本のボルトで分解できる形とした。
 分解箇所には付当てを設置し、複数回の分割、組立を実施しても再現性のあるシャーシとなる形とした。
 
 構造部材にはミスミ社 R形状アルミフレーム\cite{MISUMI}を使用することで、衝突しても対象に危害を加えにくい形状を実現した。
@@ -77,22 +77,7 @@ MID-360はVLP-16のような長距離の物体を測定することはできな�
 ロボットの状態表示のため、アルミフレームの溝部にLEDを搭載した。
 このLEDの色でロボットが自律走行状態か、操作者による操作を実施している状態かを一般通行者に対して示した。
 
-\begin{figure*}[H]
-    \centering
-    \begin{minipage}[b]{0.45\hsize}
-       \centering
-       \includegraphics[height=5cm]{fig/obstacle_detection_range_sideview.png}
-       \caption{左の図}
-       \label{fig:detection}
-    \end{minipage}
-  %
-    \begin{minipage}[b]{0.45\hsize}
-       \centering
-       \includegraphics[height=5cm]{fig/system.png}
-       \caption{ナビゲーションシステムの構成}
-       \label{fig:system}
-    \end{minipage}
-\end{figure*}
+
 
 \subsection{ソフトウェア}
 ロボットを走行させるためのソフトウェア構成は以下の通りである。
@@ -104,8 +89,8 @@ MID-360はVLP-16のような長距離の物体を測定することはできな�
     \item 経路追従
 \end{itemize}
 
-自律走行を実現するために、上記のタスクを同時に満たすシステムを構築した。
-図nにソフトウェアシステムの概要を示す。
+自律走行を実現するために、上記のタスクを同時に満たすナビゲーションシステムを構築した。
+図\ref{fig:system}にナビゲーションシステムの概要を示す。
 このシステムを構築するために多くはOSSであるROS 2\cite{ROS2}を使用した。
 このレポートでは、上記のそれぞれのタスクについてどのようなアプローチをしたか述べる。
 
@@ -133,3 +118,20 @@ MID-360はVLP-16のような長距離の物体を測定することはできな�
 第6章では、経路計画と経路追従を行うナビゲーションについて説明する。
 
 最後に、本走行の結果と今後の展開について述べる。
+
+\begin{figure*}[htbp]
+    \centering
+    \begin{minipage}[b]{0.45\hsize}
+       \centering
+       \includegraphics[height=5cm]{fig/obstacle_detection_range_sideview.png}
+       \caption{障害物検知用のLiDAR取り付け位置}
+       \label{fig:detection}
+    \end{minipage}
+  %
+    \begin{minipage}[b]{0.45\hsize}
+       \centering
+       \includegraphics[height=5cm]{fig/system.png}
+       \caption{ナビゲーションシステムの構成}
+       \label{fig:system}
+    \end{minipage}
+\end{figure*}
