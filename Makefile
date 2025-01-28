@@ -7,7 +7,7 @@ all:
 	dvipdfmx main.dvi
 
 clean:
-	rm -rf *.aux *.dvi *.log
+	rm -rf *.aux *.dvi *.log *.bbl *.blg *.out
 
 .tex.dvi:
 	platex -kanji=euc $<
