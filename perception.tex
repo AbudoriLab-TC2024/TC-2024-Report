@@ -10,9 +10,9 @@ LiDARなどのセンサを使って障害物を認識し、それを地図に反
 2DLiDARは工夫しないと、認識したい障害物を見逃したり、地面のような障害物でないものも障害物として認識することがある。
 
 Abudori Lab.チームでは、3DLiDARを使うことで、小さな障害物を認識し、坂道などの地面はアルゴリズムで除外することで、上記の問題を回避した。
-このアルゴリズムはOSSでPointCloudToLaserScanとして公開している。
+このアルゴリズムはOSSでobstacle-cloud-to-scan\cite{obstacle}として公開している。
 
-\subsection{PointCloudToLaserScan}
+\subsection{obstacle-cloud-to-scan}
 このパッケージは、3DLiDARでロボット直近の3次元点群を取得し、障害物のみを抜き出し2DLiDARのScanとして出力する。
 
 簡単な手順としては以下の通りだ。
@@ -21,7 +21,7 @@ Abudori Lab.チームでは、3DLiDARを使うことで、小さな障害物を�
     \item LiDAR点群の傾きを設置角度分回転し水平にする
     \item 法線を各点ごとに計算する
     \item 法線ベクトルから垂直に近いもののみを抜き出す
-    \item 垂直に近い点群をScanに変換する
+    \item 垂直に近い点群をscanに変換する
 \end{itemize}
 
 法線ベクトルに注目することで、坂道や乗り越えられる小さな段差は障害物と認識しない判断ができた。
@@ -34,5 +34,5 @@ Abudori Lab.チームでは、3DLiDARを使うことで、小さな障害物を�
 身近にあるものとしては、平台車や高さが20cm程度のダンボールなどが挙げられる。
 幸い、つくばチャレンジの環境にはなかったため、障害物認識で苦戦することはなかった。
 
-出力した点群をOSSのPointCloudToLaserScanパッケージに入力し、2DLiDARのscanトピックに変換した。
+出力した点群をOSSのpointcloud\_to\_laserscan\cite{laserscan}パッケージに入力し、2DLiDARのscanトピックに変換した。
 このScanトピックをNavigation2に入力することで、広く使われる2DLiDARのサンプルをそのまま動かすことができた。
