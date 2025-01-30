@@ -68,7 +68,7 @@ LaTeX 標準の通り `\documentclass` により行います．その際，使�
 ### Overleaf の利用
 
 * `platex + dvipdfmx` を使用し，Overleaf 上の Menu から Compiler を LaTeX にするとコンパイルすることができます．
-* 日本語で執筆中にコンパイルでエラーが出る際は、以下の内容の latexmkrc ファイルを作成してください。
+* 日本語で執筆中にコンパイルでエラーが出る際は，以下の内容の latexmkrc ファイルを作成してください．
 
 ```latexmkrc
 $latex = 'platex';
