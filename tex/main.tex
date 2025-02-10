@@ -1,0 +1,71 @@
+%#!platex
+\documentclass[platex,dvipdfmx]{rbproceedings}
+% English option
+%\documentclass[platex,dvipdfmx,english]{rbproceedings}
+%#!uplatex
+%\documentclass[uplatex,dvipdfmx]{rbproceedings}
+%#!lualatex
+%\documentclass[lualatex]{rbproceedings}
+
+% パッケージ
+\usepackage{graphicx,xcolor}  % グラフィックス関連
+\usepackage{here}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdfborder={0 0 0},
+}
+%\usepackage{jlreq-deluxe}  % 多書体化（otf パッケージは使用しない），Ubuntu 22.04 以降
+\usepackage[verb]{bxghost}  % \verb 前後に適切な和欧文間スペース
+\usepackage{pxrubrica}  % ルビ
+
+% 参考文献のフォントサイズを指定
+%\renewcommand{\bibfont}{\normalsize}  % 標準サイズ
+%\renewcommand{\bibfont}{\footnotesize}  % より小さく
+
+% \emph をゴシックかつ太字に（比較的新しい LaTeX が必要）
+\DeclareEmphSequence{\gtfamily\sffamily\bfseries}
+
+% 著者用マクロ
+\newcommand{\pkg}[1]{\textsf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
+
+% タイトル
+\title{3DLiDARを活用したナビゲーションシステムの構築}
+
+\author{%
+中村 勇太${}^{1}$，吉田 侑樹${}^{1}$，青木 修平${}^{1}$，村上 雄飛${}^{1}$\\
+${}^{1}$Abudori Lab.
+}
+
+%\begin{abstract}
+%概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．概要の例文．
+%\end{abstract}
+
+% 本文
+\begin{document}
+\maketitle
+
+\input{intro}
+\input{robotimg}
+\input{system}
+\input{mapimage}
+\input{mapping}
+\input{localization}
+\input{perception}
+\input{navigation}
+\input{navigationimg}
+\input{honsoukouimg}
+\input{consideration}
+\input{conclusion}
+
+% 参考文献
+\bibliographystyle{junsrt}
+\bibliography{myrefs}
+
+\end{document}
